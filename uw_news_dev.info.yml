@@ -11,7 +11,4 @@ dependencies:
   - field_ui
   - maillog
   - twig_vardumper
-  - vardumper
-  - vardumper_block
-  - vardumper_console
   - views_ui
