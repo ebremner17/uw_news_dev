@@ -1,0 +1,7 @@
+{
+    "name": "ebremner17/uw_news_dev",
+    "description": "Development module for UW news sites.",
+    "type": "drupal-custom-module",
+    "homepage": "https://github.com/ebremner17/uw_news_dev",
+    "keywords": ["Drupal"]
+}
