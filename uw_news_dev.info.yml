@@ -1,0 +1,17 @@
+name: 'UW news development'
+description: 'Configuration for UW news development.'
+type: module
+core_version_requirement: ^9
+dependencies:
+  - admin_toolbar
+  - coffee
+  - devel
+  - features
+  - features_ui
+  - field_ui
+  - maillog
+  - twig_vardumper
+  - vardumper
+  - vardumper_block
+  - vardumper_console
+  - views_ui

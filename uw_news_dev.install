@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Provides configuration and settings for UW news development.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Disable page caching and aggregation of CSS and JS.
+ */
+function uw_news_dev_install() {
+
+  // Turn off all caching and disable preprocessing of css/js.
+  \Drupal::service('config.factory')->getEditable('system.performance')->setData([
+    'cache' => [
+      'page' => [
+        'enabled' => '0',
+        'max_age' => '0',
+      ],
+    ],
+    'preprocess' => [
+      'css' => '0',
+      'js' => '0',
+    ],
+    'response' => [
+      'gzip' => '0',
+    ],
+  ])
+    ->save();
+
+  // Remove stripping of user permissions when using features.
+  \Drupal::configFactory()
+    ->getEditable('features.bundle.default')
+    ->set('assignments.alter.user_permissions', FALSE)
+    ->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Enable page caching and aggregation of CSS and JS.
+ */
+function uw_site_dev_uninstall() {
+
+  // Turn back on caching the preprocessing of css/js.
+  \Drupal::service('config.factory')->getEditable('system.performance')->setData([
+    'cache' => [
+      'page' => [
+        'enabled' => '1',
+        'max_age' => '180',
+      ],
+    ],
+    'css' => [
+      'preprocess' => '1',
+      'gzip' => '1',
+    ],
+    'js' => [
+      'preprocess' => '1',
+      'gzip' => '1',
+    ],
+  ])
+    ->save();
+}
